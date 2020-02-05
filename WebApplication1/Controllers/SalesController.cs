@@ -12,16 +12,16 @@ namespace WebApplication1
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class SalesModelController : ControllerBase
+    public class SalesController : ControllerBase
     {
-        private readonly ISalesModelService _isalesmodelservice;
+        private readonly ISalesService _isalesservice;
 
-        public SalesModelController(ISalesModelService isalesmodelservice)
+        public SalesController(ISalesService isalesservice)
         {
-            _isalesmodelservice = isalesmodelservice;
+            _isalesservice = isalesservice;
         }		
 
-		//GET api/SalesModel/RetrieveOne/{id}
+		//GET api/Sales/RetrieveOne/{id}
 		[HttpGet("{id}")]
 		[ProducesResponseType(typeof(SalesModel), StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -29,7 +29,7 @@ namespace WebApplication1
 		{
 			try
             {
-				var result = _isalesmodelservice.RetrieveOne(id);
+				var result = _isalesservice.RetrieveOne(id);
 				
 				return Ok(result);
 			}
@@ -39,7 +39,7 @@ namespace WebApplication1
             }
 		}
 
-		//GET api/SalesModel/Retrieve
+		//GET api/Sales/Retrieve
 		[HttpGet]
 		[ProducesResponseType(typeof(IList<SalesModel>), StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -47,7 +47,7 @@ namespace WebApplication1
 		{
 			try
             {
-				var result = _isalesmodelservice.Retrieve();
+				var result = _isalesservice.Retrieve();
 				
 				return Ok(result);
 			}
@@ -57,7 +57,7 @@ namespace WebApplication1
             }
 		}
 
-		//POST api/SalesModel/Create
+		//POST api/Sales/Create
 		[HttpPost]
 		[ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -65,7 +65,7 @@ namespace WebApplication1
 		{
 			try
             {
-				var result = _isalesmodelservice.Create(salesmodel);
+				var result = _isalesservice.Create(salesmodel);
 				
 				return Ok(result);
 			}
@@ -75,7 +75,7 @@ namespace WebApplication1
             }
 		}
 
-		//POST api/SalesModel/Update
+		//POST api/Sales/Update
 		[HttpPost]
 		[ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -83,7 +83,7 @@ namespace WebApplication1
 		{
 			try
             {
-				var result = _isalesmodelservice.Update(salesmodel);
+				var result = _isalesservice.Update(salesmodel);
 				
 				return Ok(result);
 			}
@@ -93,7 +93,7 @@ namespace WebApplication1
             }
 		}
 
-		//POST api/SalesModel/Update1
+		//POST api/Sales/Update1
 		[HttpPost]
 		[ActionName("Update1")]
 		[ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
@@ -102,7 +102,7 @@ namespace WebApplication1
 		{
 			try
             {
-				var result = _isalesmodelservice.Update(salesmodel);
+				var result = _isalesservice.Update(salesmodel);
 				
 				return Ok(result);
 			}
@@ -112,7 +112,7 @@ namespace WebApplication1
             }
 		}
 
-		//DELETE api/SalesModel/Delete/{id}
+		//DELETE api/Sales/Delete/{id}
 		[HttpDelete("{id}")]
 		[ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -120,7 +120,7 @@ namespace WebApplication1
 		{
 			try
             {
-				var result = _isalesmodelservice.Delete(id);
+				var result = _isalesservice.Delete(id);
 				
 				return Ok(result);
 			}
